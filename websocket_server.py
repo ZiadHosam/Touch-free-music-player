@@ -1,35 +1,46 @@
+
 import asyncio
 import json
 from websockets.asyncio.server import serve
 
 connected_clients = set()
 
+
 async def handle_client(websocket):
 
     connected_clients.add(websocket)
     print("Client connected!")
+    #print("Total connected clients:", len(connected_clients))
 
     try:
         async for message in websocket:
 
             try:
                 data = json.loads(message)
+                message_type = data.get("type")
 
-                # Forward recognized gestures to the other clients
-                if data.get("type") == "gesture":
+                if message_type in ["gesture", "user"]:
 
-                    print("Gesture received:", data)
+                    print("\nMessage received:")
+                    print(json.dumps(data, indent=4))
 
-                    for client in connected_clients.copy():
+                    sent_count = 0
+
+                    for client in list(connected_clients):
 
                         if client != websocket:
-                            await client.send(json.dumps(data))
 
-                    print("Gesture forwarded:", data["id"])
+                            try:
+                                await client.send(json.dumps(data))
+                                sent_count += 1
+
+                            except Exception as error:
+                                print("Could not forward message:", error)
+
+                    print("Forwarded to", sent_count, "client(s)")
 
                 else:
-                    print("Message received:")
-                    print(json.dumps(data, indent=4))
+                    print("Other message:", data)
 
             except json.JSONDecodeError:
                 print("Invalid JSON:", message)

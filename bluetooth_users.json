@@ -1,0 +1,497 @@
+[
+    {
+        "scan_time": "2026-11-03T18:59:27.794241+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:00:05.242650+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:01:24.142881+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:46:41.659765+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:47:32.269667+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:49:45.019519+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:50:42.305160+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T19:57:28.131335+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5A:EE:D3:A1:93:AF",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -62.0,
+            "average_rssi": -63.14,
+            "samples_count": 14
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5A:EE:D3:A1:93:AF",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -62.0,
+                "average_rssi": -63.14,
+                "samples_count": 14
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T19:59:11.003469+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5A:EE:D3:A1:93:AF",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -64,
+            "average_rssi": -64.86,
+            "samples_count": 7
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5A:EE:D3:A1:93:AF",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -64,
+                "average_rssi": -64.86,
+                "samples_count": 7
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:03:10.581691+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5A:EE:D3:A1:93:AF",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -64.0,
+            "average_rssi": -65.2,
+            "samples_count": 10
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5A:EE:D3:A1:93:AF",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -64.0,
+                "average_rssi": -65.2,
+                "samples_count": 10
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:03:42.858816+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5A:EE:D3:A1:93:AF",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -64.0,
+            "average_rssi": -64.67,
+            "samples_count": 6
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5A:EE:D3:A1:93:AF",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -64.0,
+                "average_rssi": -64.67,
+                "samples_count": 6
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:09:04.750869+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "69:97:21:B5:A3:AA",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -66.0,
+            "average_rssi": -66,
+            "samples_count": 10
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "69:97:21:B5:A3:AA",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -66.0,
+                "average_rssi": -66,
+                "samples_count": 10
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:09:52.693707+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T20:10:03.231815+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "69:97:21:B5:A3:AA",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "workout",
+            "median_rssi": -64,
+            "average_rssi": -63.6,
+            "samples_count": 5
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "69:97:21:B5:A3:AA",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "workout",
+                "median_rssi": -64,
+                "average_rssi": -63.6,
+                "samples_count": 5
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:10:25.282890+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "69:97:21:B5:A3:AA",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "focus",
+            "median_rssi": -62.0,
+            "average_rssi": -62,
+            "samples_count": 2
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "69:97:21:B5:A3:AA",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "focus",
+                "median_rssi": -62.0,
+                "average_rssi": -62,
+                "samples_count": 2
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:12:43.706992+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "69:97:21:B5:A3:AA",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -64.0,
+            "average_rssi": -64.25,
+            "samples_count": 8
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "69:97:21:B5:A3:AA",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -64.0,
+                "average_rssi": -64.25,
+                "samples_count": 8
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:14:40.767624+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "69:97:21:B5:A3:AA",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -60.0,
+            "average_rssi": -60,
+            "samples_count": 4
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "69:97:21:B5:A3:AA",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -60.0,
+                "average_rssi": -60,
+                "samples_count": 4
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:38:04.612827+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "75:99:6B:52:C6:9A",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -74.0,
+            "average_rssi": -75,
+            "samples_count": 14
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "75:99:6B:52:C6:9A",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -74.0,
+                "average_rssi": -75,
+                "samples_count": 14
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T20:38:23.244092+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "75:99:6B:52:C6:9A",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -76.0,
+            "average_rssi": -75.8,
+            "samples_count": 10
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "75:99:6B:52:C6:9A",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -76.0,
+                "average_rssi": -75.8,
+                "samples_count": 10
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:28:27.699060+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5F:2C:21:6A:13:FD",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -66,
+            "average_rssi": -66.8,
+            "samples_count": 5
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5F:2C:21:6A:13:FD",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -66,
+                "average_rssi": -66.8,
+                "samples_count": 5
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:28:48.555532+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "5F:2C:21:6A:13:FD",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -67.0,
+            "average_rssi": -67,
+            "samples_count": 8
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "5F:2C:21:6A:13:FD",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -67.0,
+                "average_rssi": -67,
+                "samples_count": 8
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:40:22.966916+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "7D:3E:03:FF:00:5A",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -70,
+            "average_rssi": -72,
+            "samples_count": 5
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "7D:3E:03:FF:00:5A",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -70,
+                "average_rssi": -72,
+                "samples_count": 5
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:40:49.309194+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "7D:3E:03:FF:00:5A",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -68,
+            "average_rssi": -68,
+            "samples_count": 1
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "7D:3E:03:FF:00:5A",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -68,
+                "average_rssi": -68,
+                "samples_count": 1
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:50:39.892984+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "77:79:D9:DB:9A:27",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -70,
+            "average_rssi": -70.4,
+            "samples_count": 5
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "77:79:D9:DB:9A:27",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -70,
+                "average_rssi": -70.4,
+                "samples_count": 5
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:55:28.444211+02:00",
+        "nearest_user": null,
+        "detected_users": []
+    },
+    {
+        "scan_time": "2026-11-03T21:56:06.978206+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "4B:B4:55:84:66:0C",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -78,
+            "average_rssi": -77.43,
+            "samples_count": 7
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "4B:B4:55:84:66:0C",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -78,
+                "average_rssi": -77.43,
+                "samples_count": 7
+            }
+        ]
+    },
+    {
+        "scan_time": "2026-11-03T21:58:30.862500+02:00",
+        "nearest_user": {
+            "device_name": "POCO X3 GT",
+            "bluetooth_address": "4B:B4:55:84:66:0C",
+            "user_id": "1003",
+            "registered_user": "Ziad",
+            "context": "chill",
+            "median_rssi": -76.0,
+            "average_rssi": -76,
+            "samples_count": 2
+        },
+        "detected_users": [
+            {
+                "device_name": "POCO X3 GT",
+                "bluetooth_address": "4B:B4:55:84:66:0C",
+                "user_id": "1003",
+                "registered_user": "Ziad",
+                "context": "chill",
+                "median_rssi": -76.0,
+                "average_rssi": -76,
+                "samples_count": 2
+            }
+        ]
+    }
+]
