@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touchless Media Controller</title>
+<style>
+:root{--bg:#eef1f6;--ink:#1b2333;--mut:#6b7587;--blue:#2574ff;--grn:#2fd18b;--red:#ef4b4b;--ln:#e4e8ef;--card:#fff;--soft:#f3f5f9}
+@media(prefers-color-scheme:dark){:root{--bg:#10141c;--ink:#e8ecf4;--card:#1a2130;--soft:#232c3f;--ln:#2d3750;--mut:#8b95a8}}
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#phone{min-height:100vh;display:flex}
+.shell{display:flex;flex:1;min-width:0;min-height:100vh;background:var(--b);color:var(--t)}
+.light{--b:#fff;--t:#1b2333;--m:#6b7587;--c:#f3f5f9;--l:#e4e8ef}
+.dark{--b:#0b0f17;--t:#f1f4fa;--m:#8b95a8;--c:#1a2130;--l:#262e3f}
+.scr{flex:1;display:flex;justify-content:center;min-width:0;padding:clamp(20px,4vw,48px) clamp(16px,5vw,56px)}
+.in{width:100%;max-width:520px;display:flex;flex-direction:column;flex:1}.in.wide{max-width:1040px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px 36px;align-items:start}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+.brand{font-weight:700;font-size:16px;padding:8px 12px 20px}
+h1{font-size:26px;letter-spacing:-.02em}h2{font-size:20px}
+.mut{color:var(--m);font-size:13px;line-height:1.45}
+.ctr{text-align:center;align-items:center}
+.btn{width:100%;padding:15px;border-radius:12px;font-weight:600;background:var(--blue);color:#fff;margin-top:10px}
+.btn.g{background:var(--c);color:var(--t)}
+.row{display:flex;align-items:center;gap:12px;background:var(--card,var(--c));border:1px solid var(--l);border-radius:12px;padding:12px;margin-bottom:10px;width:100%;text-align:left}
+.dark .row{background:var(--c);border-color:var(--l)}.light .row{background:#fff}
+.ico{width:36px;height:36px;border-radius:10px;background:var(--c);display:grid;place-items:center;font-size:18px;flex:none}
+.grow{flex:1;min-width:0}.grow b{display:block;font-size:14px}.grow span{font-size:12px;color:var(--m)}
+.chev{color:var(--m)}
+.back{align-self:flex-start;font-size:22px;color:var(--blue);margin-bottom:6px}
+.tabs{width:210px;flex:none;border-right:1px solid var(--l);padding:24px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;background:var(--b)}
+.tabs button{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--m);padding:10px 12px;border-radius:10px;text-align:left}
+.tabs button.on{color:var(--blue);background:var(--c)}.tabs i{font-style:normal;font-size:18px;width:22px;text-align:center}
+@media(max-width:800px){.shell{flex-direction:column}.brand{display:none}.tabs{position:fixed;bottom:0;left:0;right:0;width:auto;height:auto;flex-direction:row;justify-content:space-around;border-right:0;border-top:1px solid var(--l);padding:6px 0 10px;z-index:5}.tabs button{flex-direction:column;gap:2px;font-size:11px;padding:4px 10px}.scr{padding-bottom:90px}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.gc{border:0;background:#121a29;color:#fff;border-radius:14px;padding:16px 8px;text-align:center;font-size:13px}
+.gc i{font-style:normal;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#1f3a3a;margin:0 auto 8px;font-size:18px}
+.gc small{display:block;color:#8b95a8;font-size:11px}
+.note{display:flex;gap:8px;background:var(--c);border-radius:10px;padding:10px;font-size:12px;color:var(--m);margin-top:auto}
+.logo{width:120px;height:120px;border-radius:30px;background:var(--blue);display:grid;place-items:center;font-size:60px;margin:40px auto 28px}
+.dots{display:flex;gap:6px;justify-content:center;margin:auto 0 16px}.dots b{width:6px;height:6px;border-radius:50%;background:var(--l)}.dots b:first-child{background:var(--blue)}
+.cam{position:relative;border-radius:16px;overflow:hidden;background:#222;aspect-ratio:4/3;max-height:60vh;width:100%;display:grid;place-items:center;margin:0 0 10px}
+.cam video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.box{position:absolute;inset:14% 16%;border:2px solid var(--grn);border-radius:12px;pointer-events:none}
+.pill{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:#bdf5da;color:#0a6b43;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#12382d;color:#5ff0b0;border-radius:20px;padding:5px 11px;font-size:12px;align-self:flex-start}
+.chip.off{background:#3a1a1a;color:#ff8a8a}
+.art{width:150px;height:150px;border-radius:12px;display:grid;place-items:center;font-size:56px;flex:none}
+.bar{height:4px;background:var(--l);border-radius:4px;position:relative;margin:8px 0 4px}.bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:4px}
+.tm{display:flex;justify-content:space-between;font-size:11px;color:var(--m)}
+.pl{width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;font-size:22px}
+.ctl{display:flex;justify-content:space-between;align-items:center;margin:14px 10px}.ctl button{font-size:24px}
+.sw{width:46px;height:26px;border-radius:14px;background:var(--l);position:relative;flex:none}.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:var(--blue)}.sw.on::after{left:23px}
+.fb{position:fixed;inset:0;z-index:30;text-align:center;background:#0b0f17;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;animation:f .2s}.fb .chip{align-self:center}
+@keyframes f{from{opacity:0}}
+.ok{width:130px;height:130px;border-radius:50%;border:4px solid var(--grn);background:#0f3a2d;display:grid;place-items:center;font-size:60px;color:var(--grn)}
+.bad{border-color:var(--red);background:#3a1620;color:var(--red)}
+.ck{list-style:none;padding:0;margin:20px 0;text-align:left;font-size:14px;color:var(--t)}.ck li{padding:6px 0}.ck li::before{content:"✓ ";color:var(--grn)}
+.sec{font-size:12px;color:var(--m);margin:14px 0 8px;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--blue)}
+#demo{position:fixed;right:14px;bottom:14px;z-index:40;width:290px;max-height:80vh;overflow:auto;background:var(--card);color:var(--ink);border:1px solid var(--ln);border-radius:14px;padding:10px 14px;font-size:13px;box-shadow:0 8px 30px #0003}#demo summary{cursor:pointer;font-weight:600}@media(max-width:800px){#demo{bottom:74px}}
+#demo h3{font-size:14px;margin-bottom:8px}#demo button{background:var(--soft);color:var(--ink);padding:7px 10px;border-radius:8px;margin:3px 3px 3px 0;font-size:12px;border:1px solid var(--ln)}
+#demo p{color:var(--mut);margin:6px 0;line-height:1.4}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="phone"></div>
+<details id="demo"><summary>Dev panel</summary>
+ <p>Simulate what the Python backend (MediaPipe + DollarPy) will send over the socket. Keys: Space, ←, →, ↑, ↓, M.</p>
+ <div id="sim"></div>
+ <button data-j="error">Hand not detected</button>
+ <h3 style="margin-top:12px">Socket bridge</h3>
+ <p id="bst">Not connected</p>
+ <input id="wsu" value="ws://localhost:8765" style="width:100%;padding:6px;border-radius:8px;border:1px solid var(--ln)">
+ <button id="wsb">Connect</button>
+ <h3 style="margin-top:12px">Jump to screen</h3><div id="jump"></div>
+</details>
+<script>
+/* ===== Protocol (JSON over WebSocket) =====
+ backend -> UI : {type:"gesture", id:"play|next|prev|volup|voldown|mute", score:0.93}
+                 {type:"context", value:"focus|workout|chill"}   (content to load)
+                 {type:"nohand"}  /  {type:"user", id:"...", context:"..."}
+ UI -> backend : {type:"action", id, track, volume} | {type:"user", id} (from Bluetooth)
+ UI -> backend : {type:"settings", sensitivity, handTracking, performance}            */
+const $=s=>document.querySelector(s);
+const G=[['play','Play / Pause','Open palm','✋',' '],['next','Next','Swipe right','➡','ArrowRight'],['prev','Previous','Swipe left','⬅','ArrowLeft'],['volup','Volume up','Thumb up','👍','ArrowUp'],['voldown','Volume down','Thumb down','👎','ArrowDown'],['mute','Mute / Unmute','Closed fist','✊','m']];
+const SV=[['YouTube','▶','#ff0033'],['Spotify','≡','#1db954'],['Netflix','N','#e50914'],['Apple Music','♪','#fa4b6a'],['Other / System media','♫','#6b7587']];
+const LIB={focus:[['Weightless','Marconi Union','🌙','#1f3a5f'],['Experience','Ludovico Einaudi','🎹','#3b2f5e']],
+ workout:[['Blinding Lights','The Weeknd','🔥','#8a1c1c'],['Stronger','Kanye West','⚡','#7a5a10']],
+ chill:[['Sunset Lover','Petit Biscuit','🌅','#a0522d'],['Instant Crush','Daft Punk','🎧','#24506b']]};
+const S={setup:true,svc:null,ctx:'workout',i:0,play:true,pos:64,vol:68,muted:false,sens:50,track:true,sound:true,perf:false,cam:false,user:null,hist:[
+ ['play','Today, 9:41 AM'],['next','Today, 9:40 AM'],['volup','Today, 9:39 AM'],['prev','Today, 9:38 AM'],['mute','Today, 9:37 AM'],['play','Today, 9:32 AM']]};
+const trk=()=>LIB[S.ctx][S.i%2], gx=id=>G.find(g=>g[0]===id);
+let route='splash',stream=null,ws=null;
+
+/* ---- socket bridge ---- */
+const bridge={send(o){if(ws&&ws.readyState===1)ws.send(JSON.stringify(o))},
+ connect(u){try{ws=new WebSocket(u)}catch(e){return}
+  ws.onopen=()=>$('#bst').textContent='Connected to '+u;ws.onclose=ws.onerror=()=>$('#bst').textContent='Not connected (demo mode)';
+  ws.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch{return}
+   if(m.type==='gesture')act(m.id);else if(m.type==='context')setCtx(m.value);
+   else if(m.type==='nohand')go('error');else if(m.type==='user'){S.user=m.id;if(m.context)setCtx(m.context)}}}};
+function setCtx(c){if(LIB[c]){S.ctx=c;S.i=0;S.pos=0;render()}}
+
+/* ---- actions ---- */
+function act(id){const g=gx(id);if(!g)return;
+ if(id==='play')S.play=!S.play;
+ if(id==='next'){S.i++;S.pos=0}
+ if(id==='prev'){S.i=Math.max(0,S.i-1);S.pos=0}
+ if(id==='volup'){S.vol=Math.min(100,S.vol+10);S.muted=false}
+ if(id==='voldown')S.vol=Math.max(0,S.vol-10);
+ if(id==='mute')S.muted=!S.muted;
+ const d=new Date();S.hist.unshift([id,'Today, '+d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})]);
+ bridge.send({type:'action',id,track:trk()[0],volume:S.muted?0:S.vol});
+ render();
+ if(S.sound)beep();
+ const f=document.createElement('div');f.className='fb';
+ f.innerHTML=`<div class="ok">✓</div><h1>${g[1]}</h1><p class="mut">Gesture recognized</p><div class="chip">Command sent successfully</div><p class="mut" style="margin-top:40px;font-size:11px">Closes automatically</p>`;
+ $('#phone').append(f);setTimeout(()=>f.remove(),1500)}
+function beep(){try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=660;o.start();o.stop(a.currentTime+.08)}catch{}}
+async function cam(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});S.cam=true;return true}catch{S.cam=false;return false}}
+async function bt(){const el=$('#btmsg');try{
+ const d=await navigator.bluetooth.requestDevice({acceptAllDevices:true});
+ S.user=d.name||d.id;bridge.send({type:'user',id:S.user});render()}
+ catch(e){alert('Bluetooth unavailable or cancelled ('+e.message+'). Web Bluetooth needs Chrome/Edge over https or localhost.')}}
+
+/* ---- templates ---- */
+const scr=(cls,body,tab,wide)=>`<div class="shell ${cls}">${tab?tabs(tab):''}<main class="scr"><div class="in${wide?' wide':''}">${body}</div></main></div>`;
+const tabs=a=>`<nav class="tabs"><div class="brand">✋ Touchless</div>${[['home','⌂','Home'],['gestures','✋','Gestures'],['history','◷','History'],['settings','⚙','Settings']].map(t=>`<button data-j="${t[0]}" class="${a===t[0]?'on':''}"><i>${t[1]}</i>${t[2]}</button>`).join('')}</nav>`;
+const back=t=>`<button class="back" data-j="${t}" aria-label="Back">←</button>`;
+const mrow=(i,t,s,j)=>`<button class="row" data-j="${j}"><span class="ico">${i}</span><span class="grow"><b>${t}</b><span>${s}</span></span><span class="chev">›</span></button>`;
+const tog=(k,t,s)=>`<div class="row"><span class="grow"><b>${t}</b>${s?`<span>${s}</span>`:''}</span><button class="sw ${S[k]?'on':''}" data-t="${k}" role="switch" aria-checked="${S[k]}" aria-label="${t}"></button></div>`;
+
+const V={
+splash:()=>scr('light',`<div class="ctr" style="display:flex;flex-direction:column;flex:1"><div class="logo">✋</div><h1>Touchless Media<br>Controller</h1><p class="mut" style="margin-top:12px">Control your favorite media with simple, natural hand gestures.</p><div class="dots"><b></b><b></b><b></b></div><button class="btn" data-j="camera">Get started</button><p class="mut" style="margin-top:10px">Hands-free. Simple. Private.</p></div>`),
+camera:()=>scr('light',`<div class="ctr" style="display:flex;flex-direction:column;flex:1"><div class="ico" style="width:110px;height:110px;border-radius:50%;font-size:44px;margin:40px auto 20px">📷</div><h1>Camera Access</h1><p class="mut" style="margin:10px 0 20px">We use your camera to recognize hand gestures during playback.</p><div class="note" style="margin:0 0 auto;text-align:left">🛡<span><b style="color:var(--t)">Privacy first</b><br>Designed for on-device processing. No video recordings are stored.</span></div><button class="btn" data-a="allow">Allow camera access</button><button class="btn g" data-j="service">Not now</button></div>`),
+service:()=>scr('light',`${back(S.setup?'camera':'settings')}<h2>Choose a media service</h2><p class="mut" style="margin:8px 0 18px">Connect your favorite app to control playback without touching your phone.</p>${SV.map(s=>`<button class="row" data-sv="${s[0]}"><span class="ico" style="background:${s[2]};color:#fff;font-weight:700">${s[1]}</span><span class="grow"><b>${s[0]}</b></span><span class="chev">›</span></button>`).join('')}<p class="mut ctr" style="margin-top:auto;font-size:11px;text-align:center">Availability of media controls depends on the selected service and device.</p>`,S.setup?null:'settings'),
+guide:()=>scr('light',`${back('service')}<h2 style="text-align:center">Gesture Guide</h2><p class="mut" style="text-align:center;margin:8px 0 16px">Learn these simple gestures to control your media without touching the screen.</p><div class="grid">${G.map(g=>`<div class="gc"><i>${g[3]}</i>${g[1]}<small>${g[2]}</small></div>`).join('')}</div><div class="note">ⓘ Keep your hand in view and move slowly for better recognition.</div><button class="btn" data-j="home">Start controlling</button>`),
+home:()=>{const t=trk();return scr('dark',`<div style="display:flex;justify-content:space-between;align-items:center"><h2>Hands-free controller</h2><button data-j="camset" aria-label="Camera settings">⚙</button></div><span class="chip ${S.cam?'':'off'}" style="margin:10px 0 16px">● ${S.cam?'Camera active':'Camera off'}</span>
+<div class="two"><div><div class="cam" id="cam">${S.cam?'<video autoplay playsinline muted></video><div class="box"></div><div class="pill">✓ Play / Pause detected</div>':'<span class="mut">Camera off</span>'}</div>${S.cam?'':'<button class="btn" data-a="allow">Turn on camera</button>'}</div>
+<div><button class="row" data-j="playing"><span class="art" style="width:46px;height:46px;font-size:22px;background:${t[3]}">${t[2]}</span><span class="grow"><b>${t[0]}</b><span>${t[1]}</span></span><span>${S.play?'❚❚':'▶'}</span></button><p class="sec">Gestures</p><div class="grid">${G.map(g=>`<button class="gc" data-act="${g[0]}"><i>${g[3]}</i>${g[1]}<small>${g[2]}</small></button>`).join('')}</div></div></div>`,'home',true)},
+playing:()=>{const t=trk();return scr('dark',`<p class="mut" style="margin-bottom:14px">Now Playing${S.user?' · '+S.user:''}</p><div class="two"><div class="art" style="width:100%;height:auto;aspect-ratio:1;max-height:60vh;font-size:clamp(60px,12vw,120px);background:${t[3]}">${t[2]}</div><div><div style="display:flex;justify-content:space-between"><div><h2>${t[0]}</h2><p class="mut">${t[1]}</p></div>♡</div><div class="bar"><i id="bar" style="width:${S.pos/200*100}%"></i></div><div class="tm"><span id="tl">${fmt(S.pos)}</span><span>3:20</span></div>
+<div class="ctl"><button data-act="prev" aria-label="Previous">⏮</button><button class="pl" data-act="play" aria-label="Play or pause">${S.play?'❚❚':'▶'}</button><button data-act="next" aria-label="Next">⏭</button></div>
+<div style="display:flex;gap:10px;align-items:center">🔈<input type="range" min="0" max="100" value="${S.muted?0:S.vol}" data-vol><span class="mut">${S.muted?0:S.vol}%</span></div>
+<p class="sec">Context playlist</p><div>${Object.keys(LIB).map(c=>`<button class="chip ${c===S.ctx?'':'off'}" style="${c===S.ctx?'':'background:var(--c);color:var(--m)'};margin-right:6px" data-ctx="${c}">${c}</button>`).join('')}</div></div></div>`,'home',true)},
+gestures:()=>scr('light',`${back('home')}<h2>Gesture Settings</h2><p class="sec">Recognized gestures</p>${G.map(g=>`<button class="row" data-act="${g[0]}"><span class="ico">${g[3]}</span><span class="grow"><b>${g[1]}</b><span>${g[2]}</span></span><span class="chev">›</span></button>`).join('')}<div class="note">ⓘ Tap a gesture to review or change its assigned action.</div>`,'gestures'),
+camset:()=>scr('light',`${back('home')}<h2>Camera Settings</h2><p class="sec">Detection preferences</p>${mrow('📷','Camera','Front-facing camera','camset')}<div class="row" style="display:block"><div style="display:flex;justify-content:space-between"><b style="font-size:14px">Detection sensitivity</b><span class="mut">${S.sens<34?'Low':S.sens<67?'Medium':'High'}</span></div><input type="range" min="0" max="100" value="${S.sens}" data-sens><div class="tm"><span>Less sensitive</span><span>More sensitive</span></div></div>${tog('track','Show hand tracking')}${tog('sound','Gesture feedback sound')}${tog('perf','Performance mode','Improves detection on lower-end devices.')}<div class="note">🛡 Camera processing is designed to remain on your device.</div>`),
+error:()=>scr('dark',`<div class="ctr" style="display:flex;flex-direction:column;flex:1"><div class="ok bad" style="margin-top:40px">⚠</div><h1 style="margin-top:18px">Hand not detected</h1><p class="mut" style="margin-top:8px">We cannot see a clear hand in the frame.</p><ul class="ck"><li>Make sure your hand is visible</li><li>Move into better lighting</li><li>Adjust your distance from the camera</li></ul><button class="btn" data-j="home" style="margin-top:auto">Try again</button><button class="btn g" data-j="guide">View tips</button></div>`),
+history:()=>scr('light',`<h2>Gesture History</h2><p class="sec">TODAY</p>${S.hist.slice(0,8).map(h=>{const g=gx(h[0]);return mrow(g[3],g[1],h[1],'history')}).join('')}<div class="note">🛡 Gesture history stays on this device.</div>`,'history'),
+settings:()=>scr('light',`<h2>Settings</h2>${mrow('♫','Connected Service',S.svc||'Not connected','service')}<p class="sec">PREFERENCES</p>${mrow('✋','Gesture Settings','Customize your commands','gestures')}${mrow('📷','Camera Settings','Detection & privacy','camset')}${mrow('🔊','Feedback Settings','Sound, vibration & visuals','camset')}<button class="row" data-a="bt"><span class="ico">ᛒ</span><span class="grow"><b>Nearby user (Bluetooth)</b><span>${S.user?'Identified: '+S.user:'Scan to identify you'}</span></span><span class="chev">›</span></button>${mrow('⚙','General','App preferences','settings')}${mrow('ⓘ','About','Version & help','settings')}`,'settings')};
+const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+
+/* ---- router/render ---- */
+function go(r){if(r==='splash')S.setup=true;if(r==='home')S.setup=false;route=r;location.hash=r;render()}
+function render(){const p=$('#phone');p.className='';p.innerHTML=V[route]();
+ const v=p.querySelector('video');if(v&&stream)v.srcObject=stream;
+ const tb=$('#jump');if(!tb.children.length)tb.innerHTML=Object.keys(V).map(k=>`<button data-j="${k}">${k}</button>`).join('')}
+document.addEventListener('click',async e=>{const el=e.target.closest('[data-j],[data-a],[data-act],[data-sv],[data-t],[data-ctx]');if(!el)return;
+ const d=el.dataset;
+ if(d.j)go(d.j);
+ else if(d.sv){S.svc=d.sv;go(S.setup?'guide':'settings')}
+ else if(d.act)act(d.act);
+ else if(d.ctx)setCtx(d.ctx);
+ else if(d.t){S[d.t]=!S[d.t];bridge.send({type:'settings',sensitivity:S.sens,handTracking:S.track,performance:S.perf});render()}
+ else if(d.a==='allow'){await cam();route==='camera'?go('service'):render()}
+ else if(d.a==='bt')bt()});
+document.addEventListener('input',e=>{const t=e.target;
+ if('vol' in t.dataset){S.vol=+t.value;S.muted=false;t.nextElementSibling.textContent=S.vol+'%'}
+ if('sens' in t.dataset){S.sens=+t.value;t.closest('.row').querySelector('.mut').textContent=S.sens<34?'Low':S.sens<67?'Medium':'High';bridge.send({type:'settings',sensitivity:S.sens})}});
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const g=G.find(x=>x[4]===e.key);if(g){e.preventDefault();act(g[0])}});
+$('#sim').innerHTML=G.map(g=>`<button data-act="${g[0]}">${g[3]} ${g[1]}</button>`).join('');
+$('#wsb').onclick=()=>bridge.connect($('#wsu').value);
+setInterval(()=>{if(S.play&&route==='playing'){S.pos=(S.pos+1)%200;const b=$('#bar');if(b){b.style.width=S.pos/2+'%';$('#tl').textContent=fmt(S.pos)}}},1000);
+route=location.hash.slice(1);if(!V[route])route='splash';render();
+</script></body></html>
