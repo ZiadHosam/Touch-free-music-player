@@ -5,7 +5,7 @@ import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-model_path = "models\hand_landmarker.task"
+model_path = "models/hand_landmarker.task"
 
 # Initialize MediaPipe Hands
 # mp_hands = mp.solutions.hands
@@ -31,7 +31,7 @@ def results(result: vision.HandLandmarkerResult, output_image: mp.Image, timesta
             # Draw landmark numbers
             height, width, _ = frame.shape
 
-            for i, landmark in enumerate(hand_landmarks.landmark):
+            for i, landmark in enumerate(hand_landmarks):
 
                 x = int(landmark.x * width)
                 y = int(landmark.y * height)
@@ -87,8 +87,8 @@ while cap.isOpened():
 
     # Press Q to exit
     if cv2.waitKey(1) & 0xFF == ord('q'):
+        landmarker.close()
         break
 
 cap.release()
-hands.close()
 cv2.destroyAllWindows()
